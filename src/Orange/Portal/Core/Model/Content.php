@@ -346,7 +346,13 @@ class Content extends \Orange\Database\ActiveRecord
 				$requested_types = [$requested_types];
 			}
 		}
-		$class = strtolower(explode('_', get_called_class(), 2)[1]);
+		$class = get_called_class();
+		if (strpos($class, '\\') !== false) {
+			$class = explode('\\', strtolower(get_called_class()));
+			$class = array_pop($class);
+		} else {
+			$class = strtolower(explode('_', $class, 2)[1]);
+		}
 		if ($class == 'content') {
 			$allowed_types = is_null($requested_types) ? ContentType::getTypes(null, null, 'codes') : $requested_types;
 		} else if (in_array($class, ($page_types = ContentType::getPageTypes()))) {
