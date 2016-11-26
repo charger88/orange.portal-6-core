@@ -579,7 +579,7 @@ class Content extends \Orange\Database\ActiveRecord
 	{
 		$url = '';
 		if ($iid = $this->get('content_image')) {
-			$media = new OPMM_System_Media($iid);
+			$media = new \OPMM_System_Media($iid);
 			$url = $media->getDir($th) . '/' . $media->get('media_file');
 		}
 		return $url;
@@ -690,7 +690,7 @@ class Content extends \Orange\Database\ActiveRecord
 		$rss = [];
 		if ($list) {
 			foreach ($list as $item) {
-				$image = new OPMM_System_Media($item->get('content_image'));
+				$image = new \OPMM_System_Media($item->get('content_image'));
 				$rss[] = [
 					'title' => $item->get('content_title'),
 					'link' => $item->getURL(),

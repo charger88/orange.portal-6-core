@@ -87,7 +87,7 @@ class Module extends \Orange\Database\ActiveRecord
 	public function getModuleObject()
 	{
 		if ($classname = $this->get('module_code')) {
-			$classname = 'OPMO_' . ucfirst($classname);
+			$classname = '\OPMO_' . ucfirst($classname);
 			return new $classname($this->getData());
 		} else {
 			return null;

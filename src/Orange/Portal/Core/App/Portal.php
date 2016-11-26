@@ -509,7 +509,7 @@ class Portal
 	private function install()
 	{
 		Lang::load('modules/system/lang/admin', self::$sitelang);
-		$system = new OPMO_System(null);
+		$system = new \OPMO_System(null);
 		$form = $system->getInstallForm();
 		if (!$this->getPostArray()) {
 			$response = $form->getHTML();
@@ -678,8 +678,8 @@ class Portal
 	private function getCommandClassName($command)
 	{
 		$classname = '';
-		if ($command['module'] || $command['controller']) {
-			$classname = $command['module'] ? 'OPM' : 'OPA';
+		if ($command['module'] && $command['controller']) {
+			$classname = '\OPM';
 			$classname .= (strpos($command['controller'], 'admin-') === 0) ? 'A' : 'C';
 			if ($command['module']) {
 				$classname .= '_' . ucfirst($command['module']);
