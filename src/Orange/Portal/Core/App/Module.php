@@ -84,7 +84,7 @@ abstract class Module extends \Orange\Portal\Core\Model\Module
 					}
 				}
 			}
-		} catch (Exception $e) {
+		} catch (\Exception $e) {
 		}
 		return $this;
 	}
@@ -115,7 +115,7 @@ abstract class Module extends \Orange\Portal\Core\Model\Module
 					$menu = [];
 				}
 			}
-		} catch (Exception $e) {
+		} catch (\Exception $e) {
 		}
 		return $menu;
 	}

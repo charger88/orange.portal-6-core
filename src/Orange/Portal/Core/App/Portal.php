@@ -199,7 +199,7 @@ class Portal
 	 * Load config from files
 	 * @param string $hostname
 	 * @return array
-	 * @throws Exception
+	 * @throws \Exception
 	 */
 	private static function loadConfigFromFiles($hostname)
 	{
@@ -230,7 +230,7 @@ class Portal
 					}
 				}
 				if (!$installed) {
-					throw new Exception('Unknown site');
+					throw new \Exception('Unknown site');
 				}
 			} else {
 				$installed = false;
@@ -771,7 +771,7 @@ class Portal
 					readfile($fname);
 					return '';
 				}
-			} catch (Exception $e) {
+			} catch (\Exception $e) {
 			}
 		}
 		header('HTTP/1.0 404 Not Found');
@@ -806,7 +806,7 @@ class Portal
 			if ($installed) {
 				$email = isset($config['webmaster_email']) ? $config['webmaster_email'] : null;
 			}
-		} catch (Exception $e) {
+		} catch (\Exception $e) {
 		}
 		return $email;
 	}
