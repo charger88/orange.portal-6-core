@@ -661,7 +661,7 @@ class Portal
 					}
 					$result = $method_result;
 					$execStatus = 'success';
-				} catch (ReflectionException $e) {
+				} catch (\ReflectionException $e) {
 					$execStatus = 'not-found';
 				}
 			} else {
