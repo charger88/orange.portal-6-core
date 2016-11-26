@@ -636,7 +636,7 @@ class Portal
 			if (class_exists($classname)) {
 				/** @var Controller $controller */
 				$controller = new $classname($content, $this->user, $this->session, $this->templater, $arguments);
-				$controllerReflection = new ReflectionClass($controller);
+				$controllerReflection = new \ReflectionClass($controller);
 				try {
 					$methodReflection = $controllerReflection->getMethod($methodname);
 					$cache_loaded = false;
