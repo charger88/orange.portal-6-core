@@ -58,7 +58,7 @@ class Page extends Content
 			->addWhere(new Condition('content_type', 'IN', ContentType::getPageTypes()))
 			->setOrder('content_lang', \Orange\Database\Queries\Select::SORT_DESC)
 			->execute();
-		return new Content($select->getResultNextRow());
+		return new Page($select->getResultNextRow());
 	}
 
 	/**
