@@ -77,7 +77,8 @@ class Content extends \Orange\Database\ActiveRecord
 				throw new \Exception('Wrong combination of content (#' . $this->id . ') type and class: ' . $this->get('content_type') . ' / ' . get_class($this));
 			}
 		} else {
-			$this->set('content_type', explode('_', strtolower(get_class($this)), 2)[1]);
+			$classname = explode('/', strtolower(get_class($this)));
+			$this->set('content_type', array_pop($classname));
 		}
 	}
 
