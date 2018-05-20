@@ -163,13 +163,15 @@ class Portal
 			$sessionclass = $this->config('sessionclass', '\Orange\Portal\Core\Session\Native');
 			$this->session = new $sessionclass();
 			$this->templater = new Templater(self::config('system_theme', 'default'));
-			$lang = trim($this->getGet('lang', ''));
-			self::$sitelang = (strlen($lang) == 2) ? $lang : self::config('system_default_lang', self::$sitelang);
 			if (!$this->install_mode) {
+                $lang = trim($this->getGet('lang', ''));
+                self::$sitelang = (strlen($lang) == 2) ? $lang : self::config('system_default_lang', self::$sitelang);
 				$this->initModules();
 				$this->initUser();
 				$this->initXSRFFormProtection();
-			}
+			} else {
+                self::$sitelang = trim($this->getPost('default_lang', 'en'));
+            }
 		}
 	}
 
