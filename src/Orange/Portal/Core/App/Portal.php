@@ -247,7 +247,7 @@ class Portal
 		list($installed, $config) = self::loadConfigFromFiles(self::$enviroment['hostname']);
 		if ($installed) {
 			self::$configs = $config;
-			$cacheclass = $this->config('cacheclass', '\Orange\Portal\Core\Cache\Nocache');
+			$cacheclass = $this->config('cacheclass', '\Orange\Portal\Core\Cache\NoCache');
 			$this->cache = new $cacheclass($this->config('cache', []));
 			$connection = new \Orange\Database\Connection($config['db']['master']);
 			if (!empty($config['db_debug'])) {
@@ -261,7 +261,7 @@ class Portal
 				$connection->driver->setTimezone($timezone);
 			}
 		} else {
-			$this->cache = new \Orange\Portal\Core\Cache\Nocache();
+			$this->cache = new \Orange\Portal\Core\Cache\NoCache();
 			$this->install_mode = true;
 		}
 	}
